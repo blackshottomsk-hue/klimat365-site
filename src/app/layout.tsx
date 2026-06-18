@@ -41,6 +41,9 @@ export const metadata: Metadata = {
     description: siteConfig.description,
     images: [siteConfig.ogImage],
   },
+  verification: {
+    yandex: "1867e00b398a3c1b",
+  },
   robots: {
     index: true,
     follow: true,
