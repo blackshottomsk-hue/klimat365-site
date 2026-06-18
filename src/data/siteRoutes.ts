@@ -1,0 +1,17 @@
+export const level1Routes = [
+  "/",
+  "/zabory",
+  "/vorota",
+  "/kalitki",
+  "/montazh",
+  "/tehnologii",
+  "/ceny",
+  "/portfolio",
+  "/otzyvy",
+  "/dlya-kompanij",
+  "/dlya-chastnyh",
+  "/o-kompanii",
+  "/blog",
+  "/faq",
+  "/kontakty",
+] as const;
