@@ -18,11 +18,10 @@ export default function GeoCoverageSection({
         </p>
         <div className="mt-6 overflow-hidden rounded-2xl border border-border shadow-card">
           <iframe
-            src="https://yandex.ru/map-widget/v1/?um=constructor%3A68bd3789a780d3f7d5018ff143d573e7c7e125e6c2d7029c94d61137949b3fc9&source=constructor&scroll=true"
+            src="https://yandex.ru/map-widget/v1/?um=constructor%3A68bd3789a780d3f7d5018ff143d573e7c7e125e6c2d7029c94d61137949b3fc9&source=constructor"
             width="100%"
-            height="420"
+            height="400"
             frameBorder="0"
-            allowFullScreen
             title="Карта зоны выезда ZABORIO"
             style={{ display: "block" }}
           />
