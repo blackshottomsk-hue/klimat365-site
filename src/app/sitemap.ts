@@ -8,6 +8,7 @@ import {
   montazhCluster,
   pricesCluster,
 } from "../data/seo/clusters";
+import { geoPages } from "../data/seo/geoPages";
 
 const staticRoutes = [
   "",
@@ -44,6 +45,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...pricesCluster.map((item) => `/ceny/${item.slug}`),
     ...b2bCluster.map((item) => `/dlya-kompanij/${item.slug}`),
     ...blogCluster.map((item) => `/blog/${item.slug}`),
+    ...geoPages.map((item) => `/zabory-rajon/${item.slug}`),
   ];
 
   return [...staticRoutes, ...dynamicRoutes].map((route) => ({
