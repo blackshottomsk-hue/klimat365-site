@@ -41,6 +41,11 @@ export const metadata: Metadata = {
     description: siteConfig.description,
     images: [siteConfig.ogImage],
   },
+  icons: {
+    icon: "/favicon.svg",
+    shortcut: "/favicon.svg",
+    apple: "/favicon.svg",
+  },
   verification: {
     yandex: "1867e00b398a3c1b",
     google: "ZgrCs40Mg_X2c4koC02RHwTt1yC0tdKodXvuxZZ4g2M",
