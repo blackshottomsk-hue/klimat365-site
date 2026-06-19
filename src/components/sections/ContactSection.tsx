@@ -119,7 +119,7 @@ export default function ContactSection() {
           </p>
           <div className="mt-4 overflow-hidden rounded-xl border border-border">
             <iframe
-              src="https://api-maps.yandex.ru/services/constructor/1.0/html/?um=constructor%3A68bd3789a780d3f7d5018ff143d573e7c7e125e6c2d7029c94d61137949b3fc9&lang=ru_RU&scroll=true"
+              src="https://yandex.ru/map-widget/v1/?um=constructor%3A68bd3789a780d3f7d5018ff143d573e7c7e125e6c2d7029c94d61137949b3fc9&source=constructor"
               width="100%"
               height="400"
               frameBorder="0"
