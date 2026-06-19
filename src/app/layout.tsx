@@ -91,10 +91,13 @@ export default function RootLayout({
             k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
           })(window,document,'script','https://mc.yandex.ru/metrika/tag.js?id=109953795','ym');
           ym(109953795,'init',{ssr:true,webvisor:true,clickmap:true,ecommerce:"dataLayer",referrer:document.referrer,url:location.href,accurateTrackBounce:true,trackLinks:true});
+          ym(109989826,'init',{ssr:true,webvisor:true,clickmap:true,ecommerce:"dataLayer",referrer:document.referrer,url:location.href,accurateTrackBounce:true,trackLinks:true});
         `}</Script>
+        <Script id="yandex-metrika-2" strategy="afterInteractive" src="https://mc.yandex.ru/metrika/tag.js?id=109989826" />
         <noscript>
           <div>
             <img src="https://mc.yandex.ru/watch/109953795" style={{position:"absolute",left:"-9999px"}} alt="" />
+            <img src="https://mc.yandex.ru/watch/109989826" style={{position:"absolute",left:"-9999px"}} alt="" />
           </div>
         </noscript>
       </body>
