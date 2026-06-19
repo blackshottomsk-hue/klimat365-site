@@ -96,18 +96,4 @@ export const footerSitemap: { title: string; links: NavItem[] }[] = [
       { label: "Промышленные объекты", href: "/dlya-kompanij/promyshlennye-obekty" },
     ],
   },
-  {
-    title: "Районы СПб и ЛО",
-    links: [
-      { label: "Пушкинский район", href: "/zabory-rajon/zabory-pushkin" },
-      { label: "Гатчинский район", href: "/zabory-rajon/zabory-gatchina" },
-      { label: "Тосненский район", href: "/zabory-rajon/zabory-tosno" },
-      { label: "Ломоносовский район", href: "/zabory-rajon/zabory-lomonosov" },
-      { label: "Колпинский район", href: "/zabory-rajon/zabory-kolpino" },
-      { label: "Всеволожский район", href: "/zabory-rajon/zabory-vsevolozhsk" },
-      { label: "Красносельский район", href: "/zabory-rajon/zabory-krasnoselskiy" },
-      { label: "Московский район", href: "/zabory-rajon/zabory-moskovskiy" },
-      { label: "Пос. Свердлова, Новосаратовка", href: "/zabory-rajon/zabory-sverdlova" },
-    ],
-  },
 ];

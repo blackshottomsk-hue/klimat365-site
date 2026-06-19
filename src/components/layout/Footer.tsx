@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { contacts } from "../../lib/contacts";
-import { footerSitemap } from "../../lib/navigation";
 import Container from "../ui/Container";
 
 export default function Footer() {
@@ -90,22 +89,26 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Карта сайта */}
+          {/* Компания */}
           <div>
             <p className="text-sm font-semibold uppercase tracking-widest text-white/40">Компания</p>
-            <div className="mt-3 space-y-4 text-sm">
-              {footerSitemap.map((group) => (
-                <div key={group.title}>
-                  <ul className="space-y-2">
-                    {group.links.map((item) => (
-                      <li key={item.href}>
-                        <Link href={item.href} className="transition hover:text-white">{item.label}</Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+            <ul className="mt-3 space-y-2 text-sm">
+              {[
+                { label: "Портфолио", href: "/portfolio" },
+                { label: "Отзывы", href: "/otzyvy" },
+                { label: "О компании", href: "/o-kompanii" },
+                { label: "FAQ", href: "/faq" },
+                { label: "Блог", href: "/blog" },
+                { label: "Контакты", href: "/kontakty" },
+                { label: "Для застройщиков", href: "/dlya-kompanij/zastrojshchikam" },
+                { label: "Для ТСЖ", href: "/dlya-kompanij/tszh" },
+                { label: "Промышленные объекты", href: "/dlya-kompanij/promyshlennye-obekty" },
+              ].map((item) => (
+                <li key={item.href}>
+                  <Link href={item.href} className="transition hover:text-white">{item.label}</Link>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
         </div>
 
