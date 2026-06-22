@@ -23,7 +23,7 @@ export async function POST(request: Request) {
 
   const apiKey = process.env.RESEND_API_KEY;
   const to = process.env.ORDER_EMAIL_TO || contacts.email;
-  const from = process.env.ORDER_EMAIL_FROM || "ZABORIO <onboarding@resend.dev>";
+  const from = process.env.ORDER_EMAIL_FROM || "Климат 365 <onboarding@resend.dev>";
 
   if (!apiKey) {
     return NextResponse.json({ message: "Отправка не настроена." }, { status: 500 });

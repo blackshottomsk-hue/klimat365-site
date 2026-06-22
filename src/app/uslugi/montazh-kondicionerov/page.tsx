@@ -6,7 +6,7 @@ export const metadata: Metadata = buildMetadata({
   title: "Монтаж кондиционеров в СПб и Ленобласти под ключ — Климат 365",
   description:
     "Установка сплит-систем и мульти-сплит в Санкт-Петербурге и Ленобласти под ключ. Трасса, подключение, тестирование включены в цену. Работаем в новостройках Кудрово, Мурино, Новосаратовка. От 17 000 ₽.",
-  path: "/uslugi/montazh-kondicionеrov",
+  path: "/uslugi/montazh-kondicionerov",
 });
 
 export default function MontazhPage() {

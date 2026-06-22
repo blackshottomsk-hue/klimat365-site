@@ -55,9 +55,8 @@ export default function Footer() {
                 { label: "Монтаж кондиционеров", href: "/uslugi/montazh-kondicionerov" },
                 { label: "Обслуживание кондиционеров", href: "/uslugi/obsluzhivanie-kondicionerov" },
                 { label: "Ремонт кондиционеров", href: "/uslugi/remont-kondicionerov" },
-                { label: "Цены на монтаж", href: "/ceny/montazh" },
-                { label: "Цены на обслуживание", href: "/ceny/obsluzhivanie" },
-                { label: "Цены на ремонт", href: "/ceny/remont" },
+                { label: "Цены", href: "/ceny" },
+                { label: "Калькулятор", href: "/kalkulyator" },
               ].map((item) => (
                 <li key={item.href}>
                   <Link href={item.href} className="transition hover:text-white">{item.label}</Link>

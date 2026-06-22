@@ -18,15 +18,7 @@ export const mainNavigation: NavGroup[] = [
     ],
   },
   { label: "Калькулятор", href: "/kalkulyator" },
-  {
-    label: "Цены",
-    href: "/ceny",
-    children: [
-      { label: "Цены на монтаж", href: "/ceny/montazh" },
-      { label: "Цены на обслуживание", href: "/ceny/obsluzhivanie" },
-      { label: "Цены на ремонт", href: "/ceny/remont" },
-    ],
-  },
+  { label: "Цены", href: "/ceny" },
   {
     label: "Районы",
     href: "/rajony",
@@ -49,8 +41,8 @@ export const footerServices: NavItem[] = [
   { label: "Монтаж кондиционеров", href: "/uslugi/montazh-kondicionerov" },
   { label: "Обслуживание кондиционеров", href: "/uslugi/obsluzhivanie-kondicionerov" },
   { label: "Ремонт кондиционеров", href: "/uslugi/remont-kondicionerov" },
-  { label: "Цены на монтаж", href: "/ceny/montazh" },
-  { label: "Цены на обслуживание", href: "/ceny/obsluzhivanie" },
+  { label: "Цены", href: "/ceny" },
+  { label: "Калькулятор", href: "/kalkulyator" },
 ];
 
 export const footerSitemap: { title: string; links: NavItem[] }[] = [
