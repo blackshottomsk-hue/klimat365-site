@@ -15,7 +15,7 @@ const systemFont =
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.domain),
   title: {
-    default: "Установка заборов под ключ — ZABORIO",
+    default: "Монтаж кондиционеров в СПб — Климат 365",
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
         url: siteConfig.ogImage,
         width: 1200,
         height: 630,
-        alt: `${siteConfig.name} — заборы под ключ`,
+        alt: `${siteConfig.name} — монтаж кондиционеров`,
       },
     ],
   },
@@ -64,7 +64,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#1F3D2B",
+  themeColor: "#1a56db",
 };
 
 export default function RootLayout({

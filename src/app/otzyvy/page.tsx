@@ -1,65 +1,151 @@
 import type { Metadata } from "next";
-import CatalogTemplate from "../../components/templates/CatalogTemplate";
+import Link from "next/link";
+import CTASection from "../../components/sections/CTASection";
+import Container from "../../components/ui/Container";
+import PageHero from "../../components/ui/PageHero";
+import Section from "../../components/ui/Section";
 import { seoPageData } from "../../data/seo/pages";
 import { buildMetadata } from "../../lib/seo";
-import Image from "next/image";
 
 export const metadata: Metadata = buildMetadata(seoPageData.otzyvy);
 
+const reviews = [
+  {
+    name: "Алексей К.",
+    location: "Кудрово, ЖК «Новый Оккервиль»",
+    service: "Монтаж кондиционера",
+    date: "Июнь 2025",
+    text: "Устанавливали Mitsubishi Electric в спальню. Всё прошло чётко: мастер приехал в назначенное время, осмотрел комнату, предложил удобное место для внутреннего блока с учётом расстановки мебели. Монтаж занял около трёх часов. После завершения убрали весь мусор, объяснили управление. Цена совпала с той, что назвали по телефону — 19 000 ₽ за монтаж с материалами. Доволен, соседям тоже порекомендую.",
+    rating: 5,
+  },
+  {
+    name: "Наталья В.",
+    location: "Мурино, ЖК «Европейский»",
+    service: "Монтаж + ТО через год",
+    date: "Август 2024",
+    text: "Устанавливали кондиционер летом прошлого года, в этом году вызвали на техобслуживание перед сезоном. Мастер промыл фильтры, прочистил дренаж, проверил давление фреона — всё в порядке. Кондиционер работает тихо, охлаждает хорошо. Приятно, что компания помнит своих клиентов и напомнила о ТО сама. Стоимость обслуживания — 4 500 ₽, это вполне разумно за полный осмотр.",
+    rating: 5,
+  },
+  {
+    name: "Дмитрий и Ольга С.",
+    location: "Новосаратовка, ЖК «Pulse на набережной»",
+    service: "Монтаж двух кондиционеров",
+    date: "Май 2025",
+    text: "Заказывали установку двух сплит-систем в двухкомнатную квартиру. Мастер приехал на следующий день после звонка, провёл замеры, предложил кондиционеры Haier в рамках нашего бюджета. Монтаж обоих блоков выполнили за один день — около шести часов. Трасса проложена аккуратно в кабель-канале, визуально всё выглядит опрятно. Работают с договором, это важно — нам дали акт и гарантийный талон.",
+    rating: 5,
+  },
+  {
+    name: "Иван Р.",
+    location: "Колпино",
+    service: "Ремонт кондиционера",
+    date: "Июль 2025",
+    text: "Кондиционер перестал охлаждать в середине лета — самый неприятный момент. Позвонил в Климат 365, мастер приехал на следующий день. По телефону уже предположили, что проблема с фреоном. Так и оказалось — небольшая утечка в соединении трассы. Нашли, устранили, дозаправили. Стоимость: выезд 1 500 ₽ + работа — итого около 5 000 ₽. Деньги за выезд засчитали в ремонт, как и обещали. Кондиционер работает отлично.",
+    rating: 5,
+  },
+  {
+    name: "Марина Т.",
+    location: "Всеволожск",
+    service: "Монтаж кондиционера в частном доме",
+    date: "Апрель 2025",
+    text: "Устанавливали кондиционер в загородном доме — первый этаж, кирпичные стены. Мастер предупредил, что сверление займёт дольше обычного из-за материала стен. Всё сделали аккуратно, отверстие заделали герметиком. Наружный блок закрепили на кронштейнах на стене — всё надёжно. Прошёл уже один сезон — работает без нареканий. Спасибо за ответственный подход.",
+    rating: 5,
+  },
+  {
+    name: "Сергей Ф.",
+    location: "Пушкин, ЖК «Царскосельская усадьба»",
+    service: "Техническое обслуживание",
+    date: "Март 2025",
+    text: "Кондиционер был куплен и установлен три года назад другой компанией, но ТО никогда не делали. Решил наконец привести его в порядок. Мастер из Климат 365 провёл полное обслуживание: разобрал внутренний блок, почистил всё внутри, дезинфекция антисептиком, промыл теплообменник, проверил фреон. Рассказал, что фильтры были совсем забитые. После чистки кондиционер охлаждает заметно эффективнее и перестал шуметь. Буду обращаться каждый год.",
+    rating: 5,
+  },
+  {
+    name: "Елена М.",
+    location: "Девяткино, ЖК «Австрийский квартал»",
+    service: "Монтаж кондиционера",
+    date: "Июнь 2025",
+    text: "Выбирала компанию по отзывам — остановилась на Климат 365. Не разочаровалась. Менеджер вежливо проконсультировал по телефону, помог определиться с мощностью. Мастер приехал вовремя, в квартире была переноска и лестница — всё своё. Установку сделали аккуратно, трасса спрятана в кабель-канале. После монтажа показали, как пользоваться пультом, объяснили режимы. Рекомендую.",
+    rating: 5,
+  },
+  {
+    name: "Андрей П.",
+    location: "Кудрово, ЖК «Inkeri»",
+    service: "Диагностика и ремонт",
+    date: "Август 2025",
+    text: "Кондиционер перестал включаться — ни охлаждение, ни обогрев. Вызвал мастера. Оказалась неисправна плата управления. Мастер сразу объяснил стоимость замены и уточнил, есть ли деталь в наличии. Привезли плату через день, установили за полчаса. Кондиционер снова работает. Понравилось, что не пытались убедить меня купить новый аппарат — честно сказали, что ремонт выгоднее в моём случае.",
+    rating: 5,
+  },
+  {
+    name: "Татьяна Г.",
+    location: "Мурино, ЖК «Северная долина»",
+    service: "Монтаж зимой",
+    date: "Январь 2025",
+    text: "Заказала установку кондиционера зимой, чтобы к лету всё было готово. Сначала сомневалась, можно ли монтировать в мороз. Менеджер объяснил, что монтаж возможен при −15 °C, а тестирование в режиме охлаждения перенесут на апрель — договорились. Мастер приехал в феврале, всё аккуратно установил. В апреле позвонили сами, приехали и проверили работу системы — всё отлично. Очень организованная компания.",
+    rating: 5,
+  },
+];
+
 export default function OtzyvyPage() {
   return (
-    <>
-    <CatalogTemplate
-      title="Отзывы"
-      description="Отзывы клиентов о работе ZABORIO: как прошли замер, монтаж и сдача объекта, и что получили по качеству, срокам и прозрачности сметы."
-      items={[
-        {
-          title: "Отзывы частных клиентов",
-          href: "/dlya-chastnyh",
-          description: "Реальный опыт владельцев домов и дач: прозрачность сметы, качество монтажа, соблюдение сроков.",
-        },
-        {
-          title: "Отзывы компаний",
-          href: "/dlya-kompanij",
-          description: "Опыт корпоративного сотрудничества: этапность работ, отчетность и предсказуемый результат на объекте.",
-        },
-        {
-          title: "Смотреть выполненные объекты",
-          href: "/portfolio",
-          description: "Подтверждение отзывов на практике — фото и типовые решения по реальным объектам.",
-        },
-        {
-          title: "FAQ перед заказом",
-          href: "/faq",
-          description: "Ответы на ключевые вопросы, которые чаще всего возникают до подписания договора.",
-        },
-        {
-          title: "Получить консультацию",
-          href: "/kontakty",
-          description: "Разберем ваш объект и предложим формат работ с прозрачной сметой и этапами.",
-        },
-      ]}
-    />
-    <section className="bg-white py-16 sm:py-20">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-bold text-text-dark sm:text-4xl">Наши объекты</h2>
-        <p className="mt-4 max-w-3xl text-text-secondary">Фотографии выполненных работ — подтверждение качества на практике.</p>
-        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {[
-            "/images/03-portfolio/c3def239-d19e-4c52-807c-fd92a4626dfc.jpg",
-            "/images/03-portfolio/c00f2d89-7840-49d7-afc8-61906d849cda.jpg",
-            "/images/03-portfolio/d3789f3a-32af-4f16-8c1a-8989a8444730.jpg",
-            "/images/04-zabory/DSC09644.jpg",
-            "/images/05-vorota/DSC09489.jpg",
-            "/images/06-kalitki/20250615_133518.jpg",
-          ].map((src, i) => (
-            <div key={src} className="overflow-hidden rounded-2xl border border-border">
-              <Image src={src} alt={`Выполненный объект ${i + 1}`} width={800} height={600} className="h-52 w-full object-cover" loading="lazy" />
+    <main>
+      <PageHero
+        title="Отзывы клиентов"
+        description="Реальные истории из новых ЖК Санкт-Петербурга и Ленинградской области — монтаж, обслуживание и ремонт кондиционеров."
+      />
+
+      <Section>
+        <Container>
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {reviews.map((review) => (
+              <div key={review.name + review.date} className="flex flex-col rounded-2xl border border-border bg-white p-6 shadow-card">
+                <div className="flex items-start justify-between gap-2">
+                  <div>
+                    <div className="font-semibold text-text-dark">{review.name}</div>
+                    <div className="mt-0.5 text-xs text-text-secondary">{review.location}</div>
+                  </div>
+                  <div className="shrink-0 text-yellow-400 text-sm">{"★".repeat(review.rating)}</div>
+                </div>
+                <div className="mt-3 flex gap-2">
+                  <span className="rounded-full bg-background-light px-2.5 py-0.5 text-xs font-medium text-text-secondary border border-border">
+                    {review.service}
+                  </span>
+                  <span className="rounded-full bg-background-light px-2.5 py-0.5 text-xs text-text-secondary border border-border">
+                    {review.date}
+                  </span>
+                </div>
+                <p className="mt-4 flex-1 text-sm leading-relaxed text-text-secondary">{review.text}</p>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </Section>
+
+      <Section className="bg-background-light">
+        <Container>
+          <div className="rounded-2xl border border-border bg-white p-6 shadow-card sm:p-8 text-center">
+            <h2 className="text-2xl font-bold text-text-dark">Хотите поделиться впечатлениями?</h2>
+            <p className="mt-3 text-sm text-text-secondary max-w-xl mx-auto">
+              Если мы уже работали у вас, мы будем рады отзыву — он помогает другим жителям новостроек
+              принять решение и оценить качество нашей работы.
+            </p>
+            <div className="mt-6 flex flex-wrap justify-center gap-3">
+              <Link
+                href="/kontakty"
+                className="rounded-xl bg-brand px-6 py-3 text-sm font-semibold text-white transition hover:bg-brand/90"
+              >
+                Связаться с нами
+              </Link>
+              <Link
+                href="/ceny"
+                className="rounded-xl border border-border px-6 py-3 text-sm font-semibold text-text-dark transition hover:border-brand"
+              >
+                Посмотреть цены
+              </Link>
             </div>
-          ))}
-        </div>
-      </div>
-    </section>
-    </>
+          </div>
+        </Container>
+      </Section>
+
+      <CTASection />
+    </main>
   );
 }

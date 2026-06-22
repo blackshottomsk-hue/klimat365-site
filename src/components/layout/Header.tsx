@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import { contacts } from "../../lib/contacts";
 import { mainNavigation } from "../../lib/navigation";
@@ -12,9 +13,9 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-white/95 backdrop-blur">
-      <Container className="flex h-20 items-center justify-between gap-4">
-        <Link href="/" className="text-2xl font-bold text-brand">
-          ZABORIO
+      <Container className="flex h-24 items-center justify-between gap-4">
+        <Link href="/" className="flex items-center">
+          <Image src="/logo.png" alt="Климат 365" width={320} height={60} priority className="h-14 w-auto max-w-[320px] object-contain" />
         </Link>
 
         <nav className="hidden items-center gap-6 lg:flex">
@@ -52,10 +53,10 @@ export default function Header() {
             <a href={`tel:${contacts.phone}`} className="text-sm font-semibold text-text-dark">
               {contacts.phone}
             </a>
-            <p className="text-[10px] text-text-secondary">СПб и ЛО · Юг · Юго-запад · Юго-восток</p>
+            <p className="text-[10px] text-text-secondary">СПб и ЛО · Новые ЖК · Ленобласть</p>
           </div>
-          <Link href="/kalkulyator-zabora">
-            <Button>Рассчитать стоимость</Button>
+          <Link href="/kontakty">
+            <Button>Оставить заявку</Button>
           </Link>
         </div>
 
@@ -103,8 +104,8 @@ export default function Header() {
               <a href={`tel:${contacts.phone}`} className="text-sm font-semibold text-text-dark">
                 {contacts.phone}
               </a>
-              <Link href="/kalkulyator-zabora" onClick={() => setIsOpen(false)}>
-                <Button>Рассчитать стоимость</Button>
+              <Link href="/kontakty" onClick={() => setIsOpen(false)}>
+                <Button>Оставить заявку</Button>
               </Link>
             </div>
           </Container>

@@ -1,9 +1,9 @@
 export const contacts = {
-  companyName: "ZABORIO",
-  legalName: "ИП ПОДКОВЫРОВ РОМАН АНДРЕЕВИЧ",
-  phone: "+7 (995) 231-77-07",
-  email: "info@zaborio.ru",
-  address: "Санкт-Петербург и Ленинградская область (выезд по югу СПб и ЛО)",
+  companyName: "Климат 365",
+  legalName: "ИП МОМУНОВ ДАСТАН",
+  phone: "+7 (903) 952-21-77",
+  email: "info@klimat365.ru",
+  address: "Санкт-Петербург и Ленинградская область (новые ЖК, Новосаратовка и ближайшие районы)",
   socials: [
     { label: "VK", href: "#" },
     { label: "Telegram", href: "#" },

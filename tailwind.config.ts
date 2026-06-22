@@ -4,27 +4,30 @@ const config: Config = {
   content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     extend: {
+      maxWidth: {
+        "8xl": "1600px",
+      },
       colors: {
         brand: {
-          DEFAULT: "#1F3D2B",
-          dark: "#162D20",
-          light: "#2B5A40",
-          accent: "#A6D98C",
+          DEFAULT: "#1a56db",
+          dark: "#1044b8",
+          light: "#2563eb",
+          accent: "#93c5fd",
         },
         background: {
-          light: "#F4F6F4",
+          light: "#f0f5ff",
         },
         text: {
-          dark: "#1C1C1C",
-          secondary: "#5F6B5F",
+          dark: "#0f172a",
+          secondary: "#475569",
         },
         border: {
-          DEFAULT: "#E2E8E2",
+          DEFAULT: "#dbeafe",
         },
       },
       boxShadow: {
-        card: "0 8px 24px rgba(31, 61, 43, 0.08)",
-        "card-hover": "0 12px 30px rgba(31, 61, 43, 0.14)",
+        card: "0 8px 24px rgba(26, 86, 219, 0.08)",
+        "card-hover": "0 12px 30px rgba(26, 86, 219, 0.14)",
       },
     },
   },

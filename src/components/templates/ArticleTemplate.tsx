@@ -5,7 +5,15 @@ import Container from "../ui/Container";
 import PageHero from "../ui/PageHero";
 import Section from "../ui/Section";
 import Link from "next/link";
-import type { BlogContent } from "../../data/seo/blogContent";
+type BlogContent = {
+  toc?: string[];
+  intro?: string;
+  paragraphs?: string[];
+  objections?: { title: string; answer: string }[];
+  ctaTitle?: string;
+  ctaText?: string;
+  related?: { label: string; href: string }[];
+};
 
 type ArticleTemplateProps = {
   title: string;

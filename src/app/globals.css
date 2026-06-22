@@ -5,19 +5,23 @@
 @tailwind utilities;
 
 :root {
-  --color-brand: #1f3d2b;
-  --color-brand-dark: #162d20;
-  --color-brand-light: #2b5a40;
-  --color-brand-accent: #a6d98c;
-  --color-background-light: #f4f6f4;
+  --color-brand: #1a56db;
+  --color-brand-dark: #1044b8;
+  --color-brand-light: #2563eb;
+  --color-brand-accent: #93c5fd;
+  --color-background-light: #f0f5ff;
   --color-white: #ffffff;
-  --color-text-dark: #1c1c1c;
-  --color-text-secondary: #5f6b5f;
-  --color-border: #e2e8e2;
+  --color-text-dark: #0f172a;
+  --color-text-secondary: #475569;
+  --color-border: #dbeafe;
 }
 
 * {
   box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 html,
@@ -31,10 +35,7 @@ body {
   color: var(--color-text-dark);
 }
 
-h1,
-h2,
-h3,
-h4 {
+h1, h2, h3, h4 {
   color: var(--color-text-dark);
   line-height: 1.2;
 }
@@ -44,27 +45,205 @@ a {
   text-decoration: none;
 }
 
-button,
-input,
-textarea,
-select {
+button, input, textarea, select {
   font: inherit;
 }
 
 @layer base {
-  h1 {
-    @apply text-4xl font-bold sm:text-5xl;
-  }
-
-  h2 {
-    @apply text-3xl font-bold sm:text-4xl;
-  }
-
-  h3 {
-    @apply text-2xl font-semibold;
-  }
-
-  h4 {
-    @apply text-xl font-semibold;
-  }
+  h1 { @apply text-4xl font-bold sm:text-5xl; }
+  h2 { @apply text-3xl font-bold sm:text-4xl; }
+  h3 { @apply text-2xl font-semibold; }
+  h4 { @apply text-xl font-semibold; }
 }
+
+/* ── Scroll-reveal animations ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(32px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes slideLeft {
+  from { opacity: 0; transform: translateX(-32px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes slideRight {
+  from { opacity: 0; transform: translateX(32px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes pulse-ring {
+  0%   { transform: scale(1);   opacity: 0.6; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50%       { background-position: 100% 50%; }
+}
+
+.animate-fade-up    { animation: fadeUp    0.6s ease both; }
+.animate-fade-in    { animation: fadeIn    0.5s ease both; }
+.animate-slide-left { animation: slideLeft 0.6s ease both; }
+.animate-slide-right{ animation: slideRight 0.6s ease both; }
+.animate-scale-in   { animation: scaleIn   0.5s ease both; }
+.animate-float      { animation: float     3s ease-in-out infinite; }
+.animate-count-up   { animation: countUp   0.7s ease both; }
+
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+.delay-600 { animation-delay: 0.6s; }
+.delay-700 { animation-delay: 0.7s; }
+.delay-800 { animation-delay: 0.8s; }
+
+/* Reveal on scroll — JS adds .is-visible */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-28px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal-left.is-visible {
+  opacity: 1;
+  transform: none;
+}
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.94);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.reveal-scale.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Stagger children */
+.stagger-children > *:nth-child(1) { transition-delay: 0s; }
+.stagger-children > *:nth-child(2) { transition-delay: 0.1s; }
+.stagger-children > *:nth-child(3) { transition-delay: 0.2s; }
+.stagger-children > *:nth-child(4) { transition-delay: 0.3s; }
+.stagger-children > *:nth-child(5) { transition-delay: 0.4s; }
+.stagger-children > *:nth-child(6) { transition-delay: 0.5s; }
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #1a56db, #60a5fa, #93c5fd);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientShift 4s ease infinite;
+}
+
+/* Glass card */
+.glass-card {
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(219,234,254,0.6);
+}
+
+/* Shimmer skeleton */
+.shimmer {
+  background: linear-gradient(90deg, #f0f5ff 25%, #dbeafe 50%, #f0f5ff 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Pulse ring for CTA buttons */
+.pulse-ring::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 2px solid currentColor;
+  animation: pulse-ring 2s ease-out infinite;
+}
+
+/* Custom range slider */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  border-radius: 3px;
+  background: #dbeafe;
+  outline: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #1a56db;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(26,86,219,0.4);
+  transition: box-shadow 0.2s;
+}
+input[type="range"]::-webkit-slider-thumb:hover {
+  box-shadow: 0 2px 16px rgba(26,86,219,0.6);
+}
+input[type="range"]::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #1a56db;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 2px 8px rgba(26,86,219,0.4);
+}
+
+/* Smooth card hover */
+.card-hover {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(26,86,219,0.12);
+}
+
+/* Blue glow button */
+.btn-glow {
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+.btn-glow:hover {
+  box-shadow: 0 8px 32px rgba(26,86,219,0.45);
+  transform: translateY(-2px);
+}
+.btn-glow::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.btn-glow:hover::after { opacity: 1; }

@@ -1,13 +1,13 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { absoluteUrl, breadcrumbSchema, buildMetadata } from "../lib/seo";
 import Link from "next/link";
-import Image from "next/image";
 import HeroSection from "../components/home/HeroSection";
+import StatsSection from "../components/home/StatsSection";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Установка заборов под ключ в СПб и Ленобласти — цены и монтаж",
+  title: "Монтаж и обслуживание кондиционеров в СПб и Ленобласти — Климат 365",
   description:
-    "Установка заборов под ключ в СПб и Ленобласти: расчет стоимости, монтаж, договор и гарантия. Подбираем решение под ваш бюджет и задачи участка.",
+    "Установка, обслуживание и ремонт кондиционеров в Санкт-Петербурге и Ленинградской области. Работаем в новых ЖК: Кудрово, Мурино, Новосаратовка. Фиксированная цена, договор, гарантия 2 года.",
   path: "/",
 });
 
@@ -25,99 +25,150 @@ export default function HomePage() {
       />
 
       <HeroSection />
+      <StatsSection />
 
-      <section className="bg-white py-16 sm:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-text-dark sm:text-4xl">
-            Почему ZABORIO выбирают вместо обычного подрядчика
-          </h2>
-          <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+      {/* Услуги */}
+      <section className="bg-white py-20">
+        <div className="mx-auto max-w-8xl px-4 sm:px-6 lg:px-8">
+          <div className="mb-12 text-center">
+            <h2 className="text-3xl font-bold text-text-dark sm:text-4xl">Наши услуги</h2>
+            <p className="mx-auto mt-4 max-w-2xl text-text-secondary">
+              Полный цикл работ с кондиционерами — от подбора оборудования до гарантийного сервиса
+            </p>
+          </div>
+          <div className="grid gap-6 md:grid-cols-3">
             {[
-              { title: "Цена не меняется после договора", text: "Фиксируем стоимость до начала работ. Никаких «доплат по факту» и неожиданных позиций в конце — смета остаётся сметой." },
-              { title: "Сроки, которые соблюдают", text: "Прописываем дату завершения в договоре. Если сроки под угрозой — предупреждаем заранее, а не после." },
-              { title: "Подбор под ваш участок", text: "Учитываем грунт, рельеф, ветровую нагрузку и соседей. Не продаём «как обычно» — предлагаем то, что будет стоять долго." },
-              { title: "Проверка перед сдачей", text: "Контролируем вертикаль столбов, крепёж секций и работу ворот до того, как позвоним вам на приёмку. Переделок после сдачи не бывает." },
-              { title: "Договор без мелкого шрифта", text: "Работаем официально: договор, акт выполненных работ, гарантийный документ. Всё, что важно — написано понятно и до старта." },
-              { title: "Один человек ведёт весь проект", text: "Не переключаем вас между менеджерами и бригадирами. Один ответственный — от первого звонка до подписания акта." },
+              {
+                title: "Монтаж кондиционеров",
+                desc: "Устанавливаем сплит-системы любых марок в квартирах, домах и офисах. Прокладка трассы, подключение, тестирование всех режимов.",
+                href: "/uslugi/montazh-kondicionerov",
+                price: "от 17 000 ₽",
+                icon: "🔧",
+                features: ["Медная трасса в комплекте", "Все расходники включены", "Гарантия 2 года"],
+              },
+              {
+                title: "Обслуживание и чистка",
+                desc: "Промывка теплообменника, чистка фильтров и дренажа, дезинфекция, заправка фреоном. Продлевает срок службы на годы.",
+                href: "/uslugi/obsluzhivanie-kondicionerov",
+                price: "от 2 500 ₽",
+                icon: "🧹",
+                features: ["Полная разборка блока", "Дезинфекция включена", "Проверка фреона"],
+              },
+              {
+                title: "Ремонт кондиционеров",
+                desc: "Диагностика и ремонт любых неисправностей. Не охлаждает, течёт, шумит, не включается — выезд мастера в день обращения.",
+                href: "/uslugi/remont-kondicionerov",
+                price: "от 1 500 ₽",
+                icon: "⚙️",
+                features: ["Диагностика засчитывается", "Все марки и модели", "Гарантия на ремонт"],
+              },
             ].map((item) => (
-              <article key={item.title} className="rounded-2xl border border-border bg-background-light p-6 shadow-card">
-                <div className="mb-4 h-1.5 w-14 rounded-full bg-brand/70" />
-                <h3 className="text-xl font-semibold text-text-dark">{item.title}</h3>
-                <p className="mt-3 text-sm text-text-secondary">{item.text}</p>
+              <article key={item.title} className="card-hover group flex flex-col rounded-2xl border border-border bg-background-light p-6 shadow-card">
+                <div className="mb-4 flex items-center justify-between">
+                  <span className="text-4xl">{item.icon}</span>
+                  <span className="rounded-full bg-brand/10 px-3 py-1 text-sm font-bold text-brand">{item.price}</span>
+                </div>
+                <h3 className="text-xl font-bold text-text-dark">{item.title}</h3>
+                <p className="mt-3 flex-1 text-sm text-text-secondary">{item.desc}</p>
+                <ul className="mt-4 space-y-1">
+                  {item.features.map((f) => (
+                    <li key={f} className="flex items-center gap-2 text-sm text-text-secondary">
+                      <span className="text-brand">✓</span>{f}
+                    </li>
+                  ))}
+                </ul>
+                <Link href={item.href} className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-brand transition group-hover:gap-2">
+                  Подробнее <span>→</span>
+                </Link>
               </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="bg-background-light py-16 sm:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mb-12">
-            <h2 className="text-3xl font-bold text-text-dark sm:text-4xl">Как мы работаем</h2>
-            <p className="mt-4 max-w-2xl text-text-secondary">
-              Каждый этап прозрачен: вы понимаете, что происходит сейчас, что будет дальше и какой результат получите по итогу.
+      {/* Почему мы */}
+      <section className="bg-background-light py-20">
+        <div className="mx-auto max-w-8xl px-4 sm:px-6 lg:px-8">
+          <div className="mb-12 text-center">
+            <h2 className="text-3xl font-bold text-text-dark sm:text-4xl">
+              Почему выбирают Климат 365
+            </h2>
+            <p className="mx-auto mt-4 max-w-2xl text-text-secondary">
+              Мы знаем, что вам важно — и строим работу именно так
             </p>
           </div>
+          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            {[
+              { title: "Цена фиксируется до начала", text: "Называем точную стоимость на выезде. Никаких «это выяснилось в процессе» и доплат по факту.", icon: "💰" },
+              { title: "Работаем в новых ЖК", text: "Знаем особенности монтажа в новостройках: согласование с УК, фасадные работы, монтаж на высоких этажах.", icon: "🏗️" },
+              { title: "Собственная бригада", text: "Все работы выполняет наша команда. Несём полную ответственность от прокладки трассы до запуска.", icon: "👷" },
+              { title: "Гарантия 2 года", text: "Гарантийные обязательства прописаны в договоре. Если что-то пойдёт не так — приедем и устраним бесплатно.", icon: "🛡️" },
+              { title: "Договор и акт", text: "Работаем официально: договор с фиксированной ценой, акт выполненных работ и гарантийный талон.", icon: "📋" },
+              { title: "Обслуживаем то, что установили", text: "Берём кондиционеры на сервисное обслуживание: чистка, заправка, диагностика по удобному графику.", icon: "🔄" },
+            ].map((item) => (
+              <article key={item.title} className="card-hover flex gap-4 rounded-2xl border border-border bg-white p-6 shadow-card">
+                <span className="mt-1 shrink-0 text-2xl">{item.icon}</span>
+                <div>
+                  <h3 className="font-bold text-text-dark">{item.title}</h3>
+                  <p className="mt-2 text-sm text-text-secondary">{item.text}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
 
+      {/* Калькулятор баннер */}
+      <section className="bg-gradient-to-r from-brand-dark to-brand py-16">
+        <div className="mx-auto max-w-8xl px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col items-center justify-between gap-8 text-center md:flex-row md:text-left">
+            <div>
+              <h2 className="text-2xl font-bold text-white sm:text-3xl">
+                Хотите узнать стоимость заранее?
+              </h2>
+              <p className="mt-3 max-w-xl text-white/75">
+                Воспользуйтесь онлайн-калькулятором — выберите тип помещения, площадь и опции. Результат за 1 минуту, без звонков.
+              </p>
+            </div>
+            <div className="shrink-0">
+              <Link
+                href="/kalkulyator"
+                className="btn-glow inline-flex items-center gap-2 rounded-xl bg-white px-8 py-4 font-bold text-brand transition hover:bg-brand-accent"
+              >
+                ⚡ Открыть калькулятор
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Как работаем */}
+      <section className="bg-white py-20">
+        <div className="mx-auto max-w-8xl px-4 sm:px-6 lg:px-8">
+          <div className="mb-12 text-center">
+            <h2 className="text-3xl font-bold text-text-dark sm:text-4xl">Как мы работаем</h2>
+            <p className="mx-auto mt-4 max-w-2xl text-text-secondary">
+              Прозрачный процесс от заявки до запуска — вы знаете что происходит на каждом этапе
+            </p>
+          </div>
           <div className="relative">
-            {/* Connecting line */}
-            <div className="absolute left-6 top-0 hidden h-full w-px bg-border md:block" style={{ left: "2.75rem" }} />
-
-            <div className="grid gap-6">
+            <div className="absolute left-[2.75rem] top-0 hidden h-full w-px bg-border md:block" />
+            <div className="grid gap-5">
               {[
-                {
-                  step: "01",
-                  title: "Заявка и первичная консультация",
-                  text: "Оставляете заявку на сайте или звоните. Уточняем задачу: тип объекта, протяженность, предпочтения по материалу и ориентировочный бюджет. Помогаем сформулировать задачу, если пока нет четкого запроса.",
-                  icon: "📞",
-                  duration: "10–15 минут",
-                },
-                {
-                  step: "02",
-                  title: "Бесплатный выезд замерщика",
-                  text: "Приезжаем на объект в удобное для вас время. Фиксируем периметр, уклоны, тип грунта, расположение ворот и калитки, особенности участка. Делаем фотофиксацию и замеры на месте — без предположений и «навскидку».",
-                  icon: "📐",
-                  duration: "1–2 дня от заявки",
-                },
-                {
-                  step: "03",
-                  title: "Смета с вариантами комплектации",
-                  text: "Готовим смету с разбивкой: материалы, монтаж, доставка, дополнительные позиции. Предлагаем 2–3 варианта под разный бюджет — вы выбираете решение, а не принимаете единственное предложение.",
-                  icon: "📋",
-                  duration: "1–2 дня после замера",
-                },
-                {
-                  step: "04",
-                  title: "Договор с фиксированными условиями",
-                  text: "Оформляем договор с точной стоимостью, сроками выполнения и гарантийными обязательствами. Никаких формулировок «по факту» или «зависит от ситуации» — всё прописано до начала работ.",
-                  icon: "📝",
-                  duration: "Подписание в день согласования",
-                },
-                {
-                  step: "05",
-                  title: "Монтаж силами своей бригады",
-                  text: "Работаем собственной бригадой — не субподрядчиками. Доставляем материалы, устанавливаем столбы, монтируем секции, ворота и калитку. На объекте порядок: мусор вывозим, территорию оставляем чистой.",
-                  icon: "🔧",
-                  duration: "1–5 дней в зависимости от объема",
-                },
-                {
-                  step: "06",
-                  title: "Сдача объекта и гарантия",
-                  text: "Принимаете работу вместе с нами: проверяем геометрию, качество крепежа, работу ворот и калитки. Подписываем акт выполненных работ. Выдаём гарантийный документ на конструкцию и монтаж.",
-                  icon: "✅",
-                  duration: "Гарантия 2 года на монтаж",
-                },
+                { step: "01", title: "Заявка и консультация", text: "Оставляете заявку или звоните. Уточняем площадь помещения, этаж, тип объекта, пожелания по марке. Помогаем подобрать оборудование под задачу и бюджет.", duration: "10–15 минут" },
+                { step: "02", title: "Бесплатный выезд мастера", text: "Приезжаем на объект, осматриваем место монтажа, планируем трассу, оцениваем сложность работ. Называем точную стоимость на месте — без сюрпризов потом.", duration: "1–2 дня от заявки" },
+                { step: "03", title: "Договор с фиксированной ценой", text: "Оформляем договор с точной стоимостью, сроками и гарантийными обязательствами. Никаких формулировок «по факту» — всё прописано до начала работ.", duration: "В день согласования" },
+                { step: "04", title: "Монтаж кондиционера", text: "Устанавливаем внутренний и наружный блок, прокладываем трассу, подключаем электрику и дренаж. На объекте оставляем порядок — весь мусор забираем с собой.", duration: "1 день в большинстве случаев" },
+                { step: "05", title: "Запуск, настройка и сдача", text: "Тестируем все режимы, проверяем давление фреона, объясняем правила эксплуатации. Подписываем акт и выдаём гарантийный документ.", duration: "Гарантия 2 года на монтаж" },
               ].map((item) => (
-                <article key={item.step} className="relative flex gap-6 rounded-2xl border border-border bg-white p-6 shadow-card md:gap-8">
-                  {/* Step number */}
-                  <div className="relative z-10 flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-brand text-sm font-bold text-white">
+                <article key={item.step} className="relative flex gap-6 rounded-2xl border border-border bg-background-light p-6 shadow-card md:gap-8">
+                  <div className="relative z-10 flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-brand text-sm font-bold text-white shadow-md">
                     {item.step}
                   </div>
-
                   <div className="min-w-0 flex-1">
                     <div className="flex flex-wrap items-start justify-between gap-2">
-                      <h3 className="text-lg font-semibold text-text-dark">{item.title}</h3>
-                      <span className="shrink-0 rounded-full bg-background-light px-3 py-1 text-xs text-text-secondary">
+                      <h3 className="text-lg font-bold text-text-dark">{item.title}</h3>
+                      <span className="shrink-0 rounded-full bg-white px-3 py-1 text-xs text-text-secondary border border-border">
                         {item.duration}
                       </span>
                     </div>
@@ -127,100 +178,118 @@ export default function HomePage() {
               ))}
             </div>
           </div>
-
           <div className="mt-10 flex flex-wrap gap-4">
-            <Link href="/kalkulyator-zabora" className="rounded-xl bg-brand px-6 py-3 text-sm font-semibold text-white transition hover:bg-brand-dark">
-              Рассчитать стоимость
+            <Link href="/kontakty" className="btn-glow rounded-xl bg-brand px-6 py-3 text-sm font-semibold text-white transition">
+              Оставить заявку
             </Link>
-            <Link href="/kontakty" className="rounded-xl border border-border px-6 py-3 text-sm font-semibold text-text-dark transition hover:border-brand hover:text-brand">
-              Задать вопрос
+            <Link href="/ceny" className="rounded-xl border border-border px-6 py-3 text-sm font-semibold text-text-dark transition hover:border-brand hover:text-brand">
+              Посмотреть цены
             </Link>
           </div>
         </div>
       </section>
 
-      <section className="bg-white py-16 sm:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-text-dark sm:text-4xl">Типы заборов и решений</h2>
-          <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+      {/* Районы */}
+      <section className="bg-background-light py-16">
+        <div className="mx-auto max-w-8xl px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-text-dark sm:text-4xl">Работаем по всему СПб и Ленобласти</h2>
+          <p className="mt-4 max-w-2xl text-text-secondary">
+            Приоритетные направления — новые жилые комплексы на севере и востоке города. Выезжаем в день обращения.
+          </p>
+          <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {[
-              { title: "Профнастил", text: "Рациональный выбор для приватности и надежной защиты участка.", href: "/zabory/iz-profnastila", image: "/images/04-zabory/DSC09628.jpg" },
-              { title: "Евроштакетник", text: "Современный визуальный стиль с гибкой настройкой приватности.", href: "/zabory/iz-evroshtaketnika", image: "/images/04-zabory/DSC09524.jpg" },
-              { title: "3D-сетка", text: "Быстрый монтаж и аккуратный вид для частных и B2B-объектов.", href: "/zabory/3d-setka", image: "/images/04-zabory/DSC09540.jpg" },
-              { title: "Рабица", text: "Экономичное решение для дачи и технических зон с быстрым запуском.", href: "/zabory/iz-rabicy", image: "/images/04-zabory/DSC09405.jpg" },
-              { title: "Заборы под ключ", text: "Полный цикл в одном договоре: от замера до сдачи без разрыва ответственности.", href: "/zabory/pod-klyuch", image: "/images/04-zabory/DSC09372.jpg" },
-              { title: "Ворота и калитки", text: "Комплексная въездная группа в едином стиле с ограждением.", href: "/vorota", image: "/images/05-vorota/DSC09593.jpg" },
-            ].map((item) => (
-              <article key={item.title} className="rounded-2xl border border-border bg-background-light p-6 shadow-card">
-                <div className="mb-4 overflow-hidden rounded-xl">
-                  <Image src={item.image} alt={item.title} width={1200} height={560} className="h-36 w-full object-cover" loading="lazy" />
-                </div>
-                <h3 className="text-xl font-semibold text-text-dark">{item.title}</h3>
-                <p className="mt-3 text-sm text-text-secondary">{item.text}</p>
-                <Link href={item.href} className="mt-4 inline-block text-sm font-semibold text-brand hover:text-brand-dark">Подробнее →</Link>
-              </article>
+              { name: "Кудрово", desc: "ЖК Охта Парк, Звёздный, Новый Оккервиль", href: "/rajony/kudrovo" },
+              { name: "Мурино", desc: "ЖК Мурино, Девяткино, Новое Мурино", href: "/rajony/murino" },
+              { name: "Новосаратовка", desc: "ЖК Riverside, Цветной город", href: "/rajony/novosuratovka" },
+              { name: "Девяткино", desc: "Зона Мурино–Девяткино", href: "/rajony/devyatkino" },
+              { name: "Всеволожск", desc: "Город и ближайший пригород", href: "/rajony/vsevolozhsk" },
+              { name: "Колпино", desc: "Жилые кварталы и частный сектор", href: "/rajony/kolpino" },
+              { name: "Пушкин", desc: "Коттеджи и новые ЖК", href: "/rajony/pushkin" },
+              { name: "Весь СПб", desc: "Работаем по всему городу", href: "/kontakty" },
+            ].map((area) => (
+              <Link key={area.name} href={area.href} className="card-hover rounded-xl border border-border bg-white p-4 shadow-card hover:border-brand/40">
+                <p className="font-bold text-text-dark">{area.name}</p>
+                <p className="mt-1 text-xs text-text-secondary">{area.desc}</p>
+              </Link>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="bg-white py-16 sm:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-text-dark sm:text-4xl">Ответы на частые вопросы</h2>
+      {/* FAQ */}
+      <section className="bg-white py-20">
+        <div className="mx-auto max-w-8xl px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-text-dark sm:text-4xl">Частые вопросы</h2>
           <p className="mt-4 max-w-3xl text-text-secondary">
-            Закрываем ключевые вопросы до замера: по цене, срокам, договору, гарантии и организации работ.
+            Отвечаем на главные вопросы до выезда мастера
           </p>
           <div className="mt-8 grid gap-4 md:grid-cols-2">
             {[
-              { q: "Можно ли сразу узнать точную цену?", a: "Предварительно — да, точная смета формируется после замера участка." },
-              { q: "Что входит в стоимость?", a: "В смете отдельно показываем материалы, монтаж, доставку и допработы." },
-              { q: "Даете ли гарантию?", a: "Да, гарантийные условия фиксируются в договоре до начала работ." },
-              { q: "Можно сделать дешевле без потери надежности?", a: "Да, подбираем комплектацию под задачу и бюджет без критичных компромиссов." },
+              { q: "Сколько стоит установка кондиционера?", a: "Монтаж сплит-системы в СПб начинается от 17 000 ₽ — стандартная установка с трассой 3 м, расходниками и тестированием. Точную цену называем после бесплатного выезда." },
+              { q: "Вы работаете в новостройках?", a: "Да, это наше основное направление. Знаем специфику: согласование с управляющей компанией, фасадные ограничения, монтаж на верхних этажах." },
+              { q: "Как часто нужно обслуживать кондиционер?", a: "1–2 раза в год: перед летним сезоном (апрель–май) и осенью. Регулярное ТО продлевает срок службы и снижает расход электроэнергии на 15–20%." },
+              { q: "Что делать если кондиционер не охлаждает?", a: "Причин может быть несколько: грязные фильтры, утечка фреона, загрязнение теплообменника. Вызовите мастера — диагностика 1 500 ₽, засчитывается в стоимость ремонта." },
             ].map((item) => (
               <article key={item.q} className="rounded-2xl border border-border bg-background-light p-5 shadow-card">
-                <h3 className="text-lg font-semibold text-text-dark">{item.q}</h3>
+                <h3 className="font-bold text-text-dark">{item.q}</h3>
                 <p className="mt-2 text-sm text-text-secondary">{item.a}</p>
               </article>
             ))}
           </div>
-          <Link href="/faq" className="mt-6 inline-block text-sm font-semibold text-brand hover:text-brand-dark">Смотреть все вопросы и ответы →</Link>
+          <Link href="/faq" className="mt-6 inline-block text-sm font-semibold text-brand hover:text-brand-dark">
+            Смотреть все вопросы →
+          </Link>
         </div>
       </section>
 
-      <section className="bg-background-light py-16 sm:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      {/* Отзывы */}
+      <section className="bg-background-light py-20">
+        <div className="mx-auto max-w-8xl px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-text-dark sm:text-4xl">Отзывы клиентов</h2>
           <div className="mt-8 grid gap-4 md:grid-cols-3">
             {[
-              { author: "Николай, Пушкинский район", text: "Понравилось, что смета была понятной до копейки. В процессе ничего «не всплыло», сроки выдержали, результат ровно как обсуждали." },
-              { author: "Елена, Гатчинский район", text: "Сравнивали несколько подрядчиков. Здесь был самый спокойный и профессиональный подход: без давления, но с четкими рекомендациями." },
-              { author: "Андрей, Красносельский район", text: "Делали забор и откатные ворота. Хорошая организация работ, аккуратный монтаж и внятная коммуникация от замера до сдачи." },
+              { author: "Антон К.", area: "ЖК Новосаратовка", service: "Монтаж", text: "Установили сплит в новостройке. Мастер приехал в день обращения, всё объяснил, смонтировал аккуратно. Цена совпала с той, что назвали по телефону — без лишних доплат.", rating: 5 },
+              { author: "Светлана М.", area: "Кудрово", service: "Обслуживание", text: "Обратились по рекомендации соседей. Мастер пришёл с инструментами и химией, разобрал блок, всё промыл и продезинфицировал. Кондиционер стал работать тише и холоднее.", rating: 5 },
+              { author: "Игорь В.", area: "Мурино", service: "Ремонт", text: "Кондиционер перестал охлаждать. Мастер приехал на следующий день, нашёл утечку, дозаправил. Работает уже второй сезон. Гарантию дали письменно.", rating: 5 },
             ].map((item) => (
-              <article key={item.author} className="rounded-2xl border border-border bg-white p-6 shadow-card">
-                <p className="text-sm text-text-secondary">{item.text}</p>
-                <p className="mt-4 text-sm font-semibold text-text-dark">{item.author}</p>
+              <article key={item.author} className="card-hover rounded-2xl border border-border bg-white p-6 shadow-card">
+                <div className="flex items-center justify-between">
+                  <span className="text-yellow-400">{"★".repeat(item.rating)}</span>
+                  <span className="rounded-full bg-background-light px-2 py-1 text-xs text-text-secondary">{item.service}</span>
+                </div>
+                <p className="mt-3 text-sm text-text-secondary">{item.text}</p>
+                <div className="mt-4 border-t border-border pt-3">
+                  <p className="text-sm font-bold text-text-dark">{item.author}</p>
+                  <p className="text-xs text-text-secondary">{item.area}</p>
+                </div>
               </article>
             ))}
           </div>
-          <Link href="/otzyvy" className="mt-6 inline-block text-sm font-semibold text-brand hover:text-brand-dark">Смотреть все отзывы →</Link>
+          <Link href="/otzyvy" className="mt-6 inline-block text-sm font-semibold text-brand hover:text-brand-dark">
+            Смотреть все отзывы →
+          </Link>
         </div>
       </section>
 
-      <section className="bg-brand-dark py-16 text-white sm:py-20">
+      {/* CTA */}
+      <section className="bg-brand-dark py-20">
         <div className="mx-auto max-w-5xl px-4 text-center sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-white sm:text-4xl">
-            Готовы обсудить ваш объект и зафиксировать понятный план работ?
+            Нужен кондиционер в СПб или Ленобласти?
           </h2>
-          <p className="mt-4 text-white/85">
-            Получите расчет с вариантами комплектации, сроками и финальной логикой реализации под ваш участок — без шаблонных предложений и без давления.
+          <p className="mx-auto mt-4 max-w-xl text-white/75">
+            Оставьте заявку — мастер выедет бесплатно, назовёт точную цену и выполнит монтаж в удобное для вас время.
           </p>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-            <Link href="/kalkulyator-zabora" className="rounded-xl bg-white px-6 py-3 text-sm font-semibold text-brand transition hover:bg-brand-accent hover:text-brand-dark">
-              Рассчитать стоимость
-            </Link>
-            <Link href="/kontakty" className="rounded-xl border border-white/40 px-6 py-3 text-sm font-semibold text-white transition hover:border-white hover:bg-white hover:text-brand-dark">
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+            <Link href="/kontakty" className="btn-glow rounded-xl bg-white px-8 py-4 font-bold text-brand transition hover:bg-brand-accent">
               Оставить заявку
             </Link>
+            <Link href="/kalkulyator" className="rounded-xl border border-white/30 px-8 py-4 font-semibold text-white transition hover:border-white hover:bg-white/10">
+              Рассчитать стоимость
+            </Link>
+            <a href="tel:+79039522177" className="rounded-xl border border-white/30 px-8 py-4 font-semibold text-white transition hover:border-white hover:bg-white/10">
+              +7 (903) 952-21-77
+            </a>
           </div>
         </div>
       </section>

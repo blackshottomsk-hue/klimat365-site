@@ -5,7 +5,7 @@ import HeroCanvas from "./HeroCanvas";
 
 export default function HeroSection() {
   return (
-    <section style={{ position: "relative", overflow: "hidden", minHeight: "70vh", display: "flex", alignItems: "center", background: "#111" }}>
+    <section style={{ position: "relative", overflow: "hidden", minHeight: "70vh", display: "flex", alignItems: "center", background: "#0a1628" }}>
 
       {/* Фоновое фото */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -22,10 +22,10 @@ export default function HeroSection() {
         }}
       />
 
-      {/* Оверлей для читаемости текста */}
+      {/* Оверлей */}
       <div style={{
         position: "absolute", top: 0, left: 0, right: 0, bottom: 0,
-        background: "linear-gradient(105deg, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.38) 42%, rgba(0,0,0,0.02) 100%)",
+        background: "linear-gradient(105deg, rgba(10,22,40,0.85) 0%, rgba(10,22,40,0.55) 42%, rgba(10,22,40,0.15) 100%)",
         zIndex: 1,
       }} />
 
@@ -35,7 +35,7 @@ export default function HeroSection() {
       </div>
 
       {/* Контент */}
-      <div style={{ position: "relative", zIndex: 3, width: "100%", maxWidth: 1280, margin: "0 auto", padding: "80px 32px" }}>
+      <div style={{ position: "relative", zIndex: 3, width: "100%", maxWidth: 1600, margin: "0 auto", padding: "80px 32px" }}>
         <div style={{ maxWidth: 660 }}>
 
           {/* Бейдж */}
@@ -46,9 +46,9 @@ export default function HeroSection() {
             borderRadius: 999, padding: "6px 16px",
             marginBottom: 24,
           }}>
-            <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#4ade80", display: "inline-block" }} />
+            <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#93c5fd", display: "inline-block" }} />
             <span style={{ color: "rgba(255,255,255,0.85)", fontSize: 13, fontWeight: 500 }}>
-              ZABORIO — заборы, ворота и калитки
+              Климат 365 — кондиционеры в СПб и Ленобласти
             </span>
           </div>
 
@@ -58,18 +58,18 @@ export default function HeroSection() {
             fontSize: "clamp(32px, 4.5vw, 58px)",
             lineHeight: 1.1, margin: "0 0 20px",
           }}>
-            Заборы, ворота и калитки под ключ
-            <span style={{ color: "#86efac" }}> в Санкт-Петербурге и Ленобласти</span>
+            Монтаж, обслуживание и ремонт кондиционеров
+            <span style={{ color: "#93c5fd" }}> в Санкт-Петербурге и Ленобласти</span>
           </h1>
 
           {/* Подзаголовок */}
           <p style={{ color: "rgba(255,255,255,0.75)", fontSize: "clamp(15px, 1.8vw, 18px)", lineHeight: 1.6, margin: "0 0 32px", maxWidth: 520 }}>
-            Проектируем, изготавливаем и монтируем ограждения для частных домов, дач и коммерческих объектов. Приезжаем на замер, фиксируем смету и сдаём работу по договору.
+            Устанавливаем кондиционеры в новых ЖК, частных домах и офисах. Выезжаем по СПб и Ленобласти — Новосаратовка, Кудрово, Мурино и ближайшие районы.
           </p>
 
           {/* Преимущества */}
           <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginBottom: 36 }}>
-            {["Договор и акты", "Фиксированная смета", "Гарантия на работы", "Выезд замерщика бесплатно"].map(item => (
+            {["Договор и акты", "Фиксированная цена", "Гарантия на работы", "Выезд мастера бесплатно"].map(item => (
               <span key={item} style={{
                 display: "flex", alignItems: "center", gap: 6,
                 background: "rgba(255,255,255,0.07)",
@@ -84,23 +84,24 @@ export default function HeroSection() {
 
           {/* Кнопки */}
           <div style={{ display: "flex", flexWrap: "wrap", gap: 12, marginBottom: 36 }}>
-            <Link href="/kalkulyator-zabora" style={{
+            <Link href="/kontakty" style={{
               display: "inline-flex", alignItems: "center", justifyContent: "center",
-              background: "#1E5F2C", color: "#fff",
+              background: "#1a56db", color: "#fff",
+
               borderRadius: 12, padding: "14px 28px",
               fontWeight: 700, fontSize: 15, textDecoration: "none",
               border: "none", cursor: "pointer",
             }}>
-              Рассчитать стоимость →
+              Оставить заявку →
             </Link>
-            <a href="tel:+79952317707" style={{
+            <a href="tel:+79039522177" style={{
               display: "inline-flex", alignItems: "center", justifyContent: "center",
               background: "rgba(255,255,255,0.08)",
               border: "1px solid rgba(255,255,255,0.25)",
               color: "#fff", borderRadius: 12, padding: "14px 28px",
               fontWeight: 600, fontSize: 15, textDecoration: "none",
             }}>
-              +7 (995) 231-77-07
+              +7 (903) 952-21-77
             </a>
           </div>
 
@@ -110,7 +111,7 @@ export default function HeroSection() {
               <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
               <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
             </svg>
-            Санкт-Петербург и Лен. область · Юг · Юго-запад · Юго-восток
+            Санкт-Петербург и Лен. область · Новосаратовка · Кудрово · Мурино · Девяткино
           </div>
 
         </div>
